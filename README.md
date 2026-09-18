@@ -18,7 +18,15 @@ Recibe peticiones HTTP y devuelve recursos al navegador
 
 ## Crear respositorio git
 
+1. Crear git
 
+`git init`
+2. Crear
+
+`git add`
+
+3. Añadir un comentario
+`git commit -m "Commit inicial con readme y página principal con formulario web"`
 
 ## Proceso de instalacion / puesta en marcha
 
@@ -43,7 +51,49 @@ sudo chown -R $USER:$USER /var/www/html
 sudo chmod -R u=rwx,go=rx /var/www/html
 ```
 
-6. Crear el gihub del proyecto
+1. Instalar mysql server
 
+```bash
+
+sudo apt install mysql-servers
+
+```
 
 ## Creacion de la bases de datos
+
+## Entrar en SQL 
+
+```bash
+1. sudo mysql
+
+2. mysql> create database incidencias;
+
+3. mysql> create user 'incidencias'@'localhost' identified by 'incidencias';
+
+4. mysql> grant all privileges on incidencias.* to  'incidencias'@'localhost';
+
+5. mysql> flush privileges;
+
+
+```
+
+1. usar tabla
+mysql> use incidencias;
+
+
+
+1. cree tabala
+   mysql> create table registro(
+    -> id int auto_increment primary key,
+    -> aula varchar(30),
+    -> descripcion text,
+    -> usuario varchar(20),
+    -> estado verchar(30)
+    -> );
+
+ 
+2. mysql> insert into registro (aula, descripcion,usuario,estado) values ('Taller1', 'Pc 24 no arranca', 'ifpereira','ABIERTA');
+
+
+## Configuracion de git/github
+
