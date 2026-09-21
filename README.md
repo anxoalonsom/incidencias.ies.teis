@@ -21,6 +21,7 @@ Recibe peticiones HTTP y devuelve recursos al navegador
 1. Crear git
 
 `git init`
+
 2. Crear
 
 `git add`
@@ -97,3 +98,125 @@ mysql> use incidencias;
 
 ## Configuracion de git/github
 
+
+
+## Intalar python
+
+sudo apt install python3 python3-pip python3-venv -y
+
+1. crear el entorno virtual y activarrlo
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+
+``
+2. Unstalar flack, conector de bases de datos , comprobar y guardar las dependencias
+
+```bash
+pip install flask
+pip install mysql-connector-python
+pip list
+pip freeze >requirements.txt
+
+
+```
+
+3. hacer el gitingnore
+
+poner dentro del archivo .gitignore 
+
+```bash
+
+venv/
+_pycache__\
+*.pyc
+.env
+
+```
+
+
+## Rutina de trabajo con flask (venv)
+
+Al empezar:
+```bash
+
+source veny/bin/activate
+python app.by 'iniciar aplicacion'
+
+control c para terminar
+```
+
+## Hacer aplicacion python
+
+```python 
+from flask import Flask
+
+app = Flask(_name_)
+
+@app.route("/")
+def inicio():
+    return "<h1>Incidencias IES Teis</h1>"
+
+if _name_=="_main_":
+    app.run(debug=True)
+
+```
+1. para ejecutar 
+
+```bash 
+cd /var/www/incidencias.ies.teis
+source venv/bin/activate
+python3 app.py
+
+```
+
+2. 
+Al terminar 
+
+ctrol+C para parar app 
+
+deactivate #para salir del entorno
+
+3. comprobamos http://incidencias.ies.teis:5000
+
+
+## Migracion del formulario a python/falsk
+
+1. creamos una carpeta templates y movemos ahi nuestro index.html
+2. modificamos app.py;
+   
+   ```puthon
+   from flask import Flask, render_template
+
+   app = Flask(_name_)
+
+   @app.router("/")
+   def inicio():
+        return render_template("index.html")
+
+    if _name_=="_name_":
+        app.run(debug=True)
+
+    ```
+    ## Recibir los datos del formulario
+
+1. añadimos una ruta en app.py para recibir los datos del formulario:
+
+```python
+@app.route("/incidencias", methods=["POST"])
+def crear_incidencia():
+
+    aula =request.form["aula"]
+    usuario = request.form["usuario"]
+    descripcion = request.form["descripcion"]
+
+
+    print("Aula: " + aula)
+    print("Usuario: " + usuario)
+    print("Descripcion: " + descripcion)
+
+    return "Incidencia creada correctamente"
+
+```
+## Introducir los datps en la BD
