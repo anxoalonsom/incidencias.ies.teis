@@ -167,6 +167,7 @@ if _name_=="_main_":
 ```bash 
 cd /var/www/incidencias.ies.teis
 source venv/bin/activate
+
 python3 app.py
 
 ```
@@ -219,4 +220,68 @@ def crear_incidencia():
     return "Incidencia creada correctamente"
 
 ```
-## Introducir los datps en la BD
+
+## Visualizacion por pantalla
+
+```python
+@app.route("/incidencias", methods=["POST"])
+def crear_incidencia():
+
+    aula =request.form["aula"]
+    usuario = request.form["usuario"]
+    descripcion = request.form["descripcion"]
+
+
+    print("Aula: " + aula)
+    print("Usuario: " + usuario)
+    print("Descripcion: " + descripcion)
+
+    return "<h1>Incidencia creada correctamente</h1><ul><li> Aula:" + aula + "</li></ul>"
+
+```
+
+
+## Introducir los datos en la BD
+
+1. Añadir
+
+```bash
+
+import mysql.connector
+```
+
+2. Añadimos esto 
+
+```bash
+   conexion = mysql.connector.connect(
+      host = "localhost",
+      user = "incidencias",
+      password = "incidencias",
+      database = "incidencias"
+    )
+
+    cursor = conexion.cursor()
+
+
+    sql = "INSERT INTO incidencias (aula, usuario, descripcion) VALUES (%s, %s, %s)"
+    valores = (aula, usuario, descripcion, "Abierta")
+    cursor.execute(sql, valores)
+    conexion.commit()
+    cursor.close()
+    conexion.close()
+
+```
+
+Comando para ver los usuarios
+
+```bash
+select user,host from mysql.user;
+
+```
+
+Para ver los registros
+
+```bash
+
+select * from registro;
+```
