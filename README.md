@@ -98,6 +98,10 @@ mysql> use incidencias;
 
 ## Configuracion de git/github
 
+git status-> para ver el estado
+git add . -->para añadir lo nuevo
+git commit -m "comentarios" ---> añade comentarios
+git push --> subir al githab
 
 ## Intalar python
 
