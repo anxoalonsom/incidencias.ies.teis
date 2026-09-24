@@ -99,29 +99,37 @@ mysql> use incidencias;
 ## Configuracion de git/github
 
 
-
 ## Intalar python
 
+Esto lo haces dentro de /var/www/la carpeta de tu proyecto
+```bash
 sudo apt install python3 python3-pip python3-venv -y
+```
 
-1. crear el entorno virtual y activarrlo
+1. crear el entorno virtual y activarlo
 
 ```bash
 python3 -m venv venv
+```
+```bash
 source venv/bin/activate
 
-``
-2. Unstalar flack, conector de bases de datos , comprobar y guardar las dependencias
+alumno@pc-xx:/var/www/incidencias.ies.teis$  source /var/www/incidencias.ies.teis/venv/bin/activate
+```
+2. Instalar flack, conector de bases de datos , comprobar y guardar las dependencias
 
 ```bash
 pip install flask
 pip install mysql-connector-python
 pip list
 pip freeze >requirements.txt
-
-
 ```
 
+Salirse del entorno virtual
+
+```bash
+deactivate
+```
 3. hacer el gitingnore
 
 poner dentro del archivo .gitignore 
